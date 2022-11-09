@@ -9,10 +9,10 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected  $fillable=[
+    public  function  user(){
 
-        'name','lName','points_average'
+        return $this->belongsTo(User::class);
 
-    ];
+    }
 
 }

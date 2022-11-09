@@ -25,22 +25,12 @@ Route::get('/TestLogin', function () {
 });
 
 
-//route::get('/student','App\Http\Controllers\StudentController@index');
-//route::get('/student/create','App\Http\Controllers\StudentController@create');
-//route::post('/student','App\Http\Controllers\StudentController@store');
-//route::get('/student/{id}/edit','App\Http\Controllers\StudentController@edit');
-//route::put('/student/{id}','App\Http\Controllers\StudentController@update');
-//
-//route::delete('/student/{id}','App\Http\Controllers\StudentController@destroy');
-//
-//route::get('/student/{id}','App\Http\Controllers\StudentController@show');
-//
 
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/Test', [App\Http\Controllers\StudentController::class, 'Test_Roles'])->name('Test');
+//Route::get('/Test', [App\Http\Controllers\StudentController::class, 'Test_Roles'])->name('Test');
 
 
 /*route::middleware('can:manage_users')->group(function(){
@@ -59,3 +49,4 @@ Route::post('/admin', [App\Http\Controllers\AdminController::class, 'store'])->n
 Route::put('/admin/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('update_user');
 route::delete('/admin/{id}','App\Http\Controllers\AdminController@destroy')->name('delete_user');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/Test', [App\Http\Controllers\AdminController::class, 'Test_Roles'])->name('test');

@@ -159,4 +159,19 @@ class AdminController extends Controller
 
     }
 
+
+    public function  Test_Roles(){
+
+        Permission::create(['name' => 'manage_users']);
+
+        $admin = Role::create(['name' => 'admin']);
+
+        $admin->givePermissionTo('manage_users');
+
+        auth()->user()->assignRole($admin);
+
+        return view('admin.index');
+
+    }
+
 }
