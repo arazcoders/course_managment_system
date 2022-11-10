@@ -20,8 +20,12 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->string('major');
-            $table->string('entrance_year');
+            $table->date('birth_date');
+            $table->string('call_number');
+            $table->string('education_level');
+            $table->string('personnel_pic');
+            $table->string('national_card');
+
             $table->timestamps();
         });
     }
