@@ -53,4 +53,10 @@ class User extends Authenticatable
 
     }
 
+    public function Get_Teacher_Data(){
+
+        return $this->hasOne(Teacher::class);
+
+    }
+
 }
