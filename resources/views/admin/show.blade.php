@@ -1,7 +1,6 @@
-@extends('layouts.TestLayout')
+@extends('layouts.adminPanel')
 
 @section('content')
-
 
     <div class="row">
         <div class="col-xs-12 col-lg-12 ">
@@ -22,57 +21,61 @@
 
                                 <div class="form-group">
 
-                                    <label class="col-md-2 control-label" > کد ملی</label>
+                                    <label class="col-md-2 control-label"> کد ملی</label>
 
                                     <div class="col-md-10">
-                                        <input  type="text" class="form-control" value="{{$user->userName}}" readonly="true"/>
+                                        <input type="text" class="form-control" value="{{$user->userName}}"
+                                               readonly="true"/>
                                     </div>
 
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label class="col-md-2 control-label" >نام</label>
+                                    <label class="col-md-2 control-label">نام</label>
 
                                     <div class="col-md-10">
 
-                                        <input  type="text" class="form-control" value="{{ $user->name }}" readonly="true"/>
+                                        <input type="text" class="form-control" value="{{ $user->name }}"
+                                               readonly="true"/>
 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label class="col-md-2 control-label" >نام خانوادگی</label>
+                                    <label class="col-md-2 control-label">نام خانوادگی</label>
 
                                     <div class="col-md-10">
-                                        <input  type="text" class="form-control" value="{{$user->last_name}}" readonly="true"/>
+                                        <input type="text" class="form-control" value="{{$user->last_name}}"
+                                               readonly="true"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label class="col-md-2 control-label" >ایمیل</label>
+                                    <label class="col-md-2 control-label">ایمیل</label>
 
                                     <div class="col-md-10">
-                                        <input  type="text" class="form-control" value="{{$user->email}}" readonly="true"/>
+                                        <input type="text" class="form-control" value="{{$user->email}}"
+                                               readonly="true"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label class="col-md-2 control-label" >نقش سامانه ای</label>
+                                    <label class="col-md-2 control-label">نقش سامانه ای</label>
 
                                     <div class="col-md-10" style="display: flex">
                                         <div>
 
-                                            <input type="checkbox" @if($is_teacher)  checked  @endif/>
+                                            <input type="checkbox" @if($is_teacher)  checked @endif/>
                                             <labe>استاد</labe>
 
                                         </div>
                                         <div style="padding-right: 10px;">
 
-                                            <input type="checkbox" @if($is_student)  checked  @endif />
+                                            <input type="checkbox" @if($is_student)  checked @endif />
                                             <labe>دانشجو</labe>
 
                                         </div>
@@ -93,8 +96,6 @@
         </div>
 
 
-
     </div>
-
 
 @endsection

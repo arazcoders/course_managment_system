@@ -1,8 +1,8 @@
-@extends('layouts.studentPanel')
+@extends('layouts.teacherPanel')
 
 @section('title')
 
-Users List
+
 
 @endsection
 
@@ -51,7 +51,7 @@ Users List
 
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title" style="color: #645ca8;"><i class="icon-list"></i>اطلاعات دانشجویی</h3>
+                <h3 class="box-title" style="color: #645ca8;"><i class="icon-list"></i>اطلاعات استاد</h3>
                 <div class="box-tools pull-left">
                     <a href="#" class="action-box" data-widget="collapse"><i class="icon-arrow-down"></i></a>
                 </div>

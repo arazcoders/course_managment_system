@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html dir="rtl" style="height: auto; min-height: 100%;">
 <head>
-    <title>واحد توسعه و تحقیق </title>
+    <title>پنل دانشجویان </title>
     <meta charset="utf-8">
     <meta name="description">
     <meta name="keywords">
@@ -28,8 +28,6 @@
 
     <script src="{{\Illuminate\Support\Facades\URL::asset('js/public.js')}}"></script>
     <script src="{{\Illuminate\Support\Facades\URL::asset('js/main.js')}}"></script>
-
-
 
     <style>
         a span {
@@ -109,7 +107,7 @@
             <div style="font-size:13px;">
 
                 <span style="height:30px;display:block;color:white;">سامانه دانشجویی "یار دبستانی"</span>
-                <span style="font-size:12px; color:white;display:block;text-align:center;">پنل مدیریت</span>
+                <span style="font-size:12px; color:white;display:block;text-align:center;">پنل دانشجو</span>
 
             </div>
 
@@ -142,7 +140,7 @@
                     <i class="icon-user icon-user-following" style="color:white;"></i>
 
                     <p style="color:white;">
-                        <span style="color:white;">دکتر علیرضا کریمی _</span>مدیر واحد
+                        <span style="color:white;">{{ auth()->user()->name.' '.auth()->user()->last_name }} _</span>دانشجو
                     </p>
 
                 </div>

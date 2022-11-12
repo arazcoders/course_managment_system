@@ -19,29 +19,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-Route::get('/TestLogin', function () {
-    return view('login');
-});
-
-
-
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('/Test', [App\Http\Controllers\StudentController::class, 'Test_Roles'])->name('Test');
-
-
-/*route::middleware('can:manage_users')->group(function(){
-
-
-
-});*/
-
-
-
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('index_admin');
 Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create']);
 Route::get('/admin/{id}', [App\Http\Controllers\AdminController::class, 'show'])->name('show_user');
 Route::get('/admin/{id}/edit', [App\Http\Controllers\AdminController::class, 'edit']);
@@ -49,4 +29,12 @@ Route::post('/admin', [App\Http\Controllers\AdminController::class, 'store'])->n
 Route::put('/admin/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('update_user');
 route::delete('/admin/{id}','App\Http\Controllers\AdminController@destroy')->name('delete_user');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/Test', [App\Http\Controllers\AdminController::class, 'Test_Roles'])->name('test');
+
+Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('index_student');
+Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('index_teacher');
+Route::get('/roleSelection', [App\Http\Controllers\Auth\LoginController::class, 'role_selection']);
+Route::post('/redirect_to_panels', [App\Http\Controllers\Auth\LoginController::class, 'redirect_to_panels']);
+
+
+
+

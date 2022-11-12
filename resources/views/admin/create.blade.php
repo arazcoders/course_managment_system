@@ -1,7 +1,6 @@
-@extends('layouts.TestLayout')
+@extends('layouts.adminPanel')
 
 @section('content')
-
 
     <div class="row">
         <div class="col-xs-12 col-lg-12 ">
@@ -24,75 +23,75 @@
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" > کد ملی</label>
+                                        <label class="col-md-2 control-label"> کد ملی</label>
 
                                         <div class="col-md-10">
-                                            <input  type="text"  name="userName" class="form-control"  />
+                                            <input type="text" name="userName" class="form-control"/>
                                         </div>
 
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" >نام</label>
+                                        <label class="col-md-2 control-label">نام</label>
 
                                         <div class="col-md-10">
 
-                                            <input  type="text"  name="name" class="form-control" />
+                                            <input type="text" name="name" class="form-control"/>
 
                                         </div>
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" >نام خانوادگی</label>
+                                        <label class="col-md-2 control-label">نام خانوادگی</label>
 
                                         <div class="col-md-10">
-                                            <input  type="text"   name="last_name" class="form-control"  />
+                                            <input type="text" name="last_name" class="form-control"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" >ایمیل</label>
+                                        <label class="col-md-2 control-label">ایمیل</label>
 
                                         <div class="col-md-10">
-                                            <input  type="text" name="email" class="form-control"  />
+                                            <input type="text" name="email" class="form-control"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" >رمز</label>
+                                        <label class="col-md-2 control-label">رمز</label>
 
                                         <div class="col-md-10">
-                                            <input  type="password" name="password" class="form-control"  />
+                                            <input type="password" name="password" class="form-control"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" >تکرار رمز</label>
+                                        <label class="col-md-2 control-label">تکرار رمز</label>
 
                                         <div class="col-md-10">
-                                            <input  type="password" name="password_confirmation" class="form-control"  />
+                                            <input type="password" name="password_confirmation" class="form-control"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label class="col-md-2 control-label" >نقش سامانه ای</label>
+                                        <label class="col-md-2 control-label">نقش سامانه ای</label>
 
                                         <div class="col-md-10" style="display: flex">
                                             <div>
 
-                                                <input type="checkbox" name="teacher" />
+                                                <input type="checkbox" name="teacher"/>
                                                 <labe>استاد</labe>
 
                                             </div>
                                             <div style="padding-right: 10px;">
 
-                                                <input type="checkbox" name="student"  />
+                                                <input type="checkbox" name="student"/>
                                                 <labe>دانشجو</labe>
 
                                             </div>
@@ -103,7 +102,9 @@
                                     <div class="form-group">
 
                                         <div class="col-md-2"></div>
-                                        <button type="submit" class="btn btn-primary" style="margin-right: 15px;">ثبت نام</button>
+                                        <button type="submit" class="btn btn-primary" style="margin-right: 15px;">ثبت
+                                            نام
+                                        </button>
 
                                     </div>
 

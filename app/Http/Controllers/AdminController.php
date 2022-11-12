@@ -22,6 +22,8 @@ class AdminController extends Controller
 
         $this->middleware('can:manage_users');
 
+
+
     }
 
     public  function  index(){

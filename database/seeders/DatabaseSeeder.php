@@ -34,15 +34,37 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make('MJamshidi73@')
         ]);
 
+        DB::table('users')->insert([
+            'userName'=>'2740933763',
+            'name'=>'پدرام',
+            'last_name'=>'اخلاقی',
+            'email'=>'pedram@gmail.com',
+            'password'=>Hash::make('MJamshidi73@')
+        ]);
+
+        DB::table('users')->insert([
+            'userName'=>'2740933764',
+            'name'=>'مرتضی',
+            'last_name'=>'ایمانی',
+            'email'=>'morteza@gmail.com',
+            'password'=>Hash::make('MJamshidi73@')
+        ]);
+
         Permission::create(['name' => 'manage_users']);
+        Permission::create(['name' => 'student_login']);
+        Permission::create(['name' => 'teacher_login']);
 
         $admin= Role::create(['name' => 'admin']);
-        Role::create(['name' => 'teacher']);
-        Role::create(['name' => 'student']);
+        $teacher=Role::create(['name' => 'teacher']);
+        $student=Role::create(['name' => 'student']);
 
         $admin->givePermissionTo('manage_users');
+        $teacher->givePermissionTo('teacher_login');
+        $student->givePermissionTo('student_login');
 
         User::query()->findOrFail(1)->assignRole($admin);
+        User::query()->findOrFail(2)->assignRole($teacher);
+        User::query()->findOrFail(3)->assignRole($student);
 
     }
 }
