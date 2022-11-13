@@ -2,7 +2,7 @@
 
 @section('title')
 
-Users List
+پنل دانشجویان
 
 @endsection
 
@@ -58,25 +58,125 @@ Users List
             </div>
             <div class="box-body">
                 <div class="row">
+                    <form action="/student/{{$user->id}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
                     <div class="col-lg-12">
 
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th style="width:5%;">ردیف</th><th>کد ملی</th><th>نام</th><th>نام خانوادگی</th><th>ایمیل</th><th>نقش سامانه ای</th><th>گزینه ها</th>
+                        <div class="form-group">
 
-                            </tr>
-                            </thead>
-                            <tbody>
+                            <label class="col-md-2 control-label"> کد ملی</label>
+
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" value="{{$user->userName}}"
+                                       readonly="true"/>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">نام</label>
+
+                            <div class="col-md-10">
+
+                                <input type="text" class="form-control" value="{{ $user->name }}"
+                                       readonly="true"/>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">نام خانوادگی</label>
+
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" value="{{$user->last_name}}"
+                                       readonly="true"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">ایمیل</label>
+
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" value="{{$user->email}}"
+                                       readonly="true"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">نقش سامانه ای</label>
+
+                            <div class="col-md-10" style="display: flex">
+                                <div>
+
+                                    <input type="checkbox" @if($is_teacher)  checked @endif disabled/>
+                                    <labe>استاد</labe>
+
+                                </div>
+                                <div style="padding-right: 10px;">
+
+                                    <input type="checkbox" @if($is_student)  checked @endif disabled/>
+                                    <labe>دانشجو</labe>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">َشماره تماس</label>
+
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="call_number" value="{{$user->Get_Student_Data->call_number}}"  />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">سطح تحصیلات</label>
+
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="education_level" value="{{$user->Get_Student_Data->education_level}}"  />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">تاریخ تولد</label>
+
+                            <div class="col-md-10">
+                                <input type="date" class="form-control" name="birth_date" value="{{$user->Get_Student_Data->birth_date}}"
+                                       />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-2 control-label">آپلود عکس</label>
+
+                            <div class="col-md-10">
+                                <input type="file" class="form-control" name="personnel_pic"  />
+
+                            </div>
+                        </div>
 
 
+                        <div class="form-group">
 
-                            </tbody>
+                        <button type="submit"  class="btn btn-info">تکمیل اطلاعات</button>
 
-                        </table>
+                        </div>
 
 
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

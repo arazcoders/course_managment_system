@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Student;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
@@ -143,9 +145,40 @@ class AdminController extends Controller
         $user->email=$request['email'];
         $user->save();
 
-        if($request['teacher']){ $user->assignrole('teacher');}else{  $user->removeRole('teacher'); }
+        if($request['teacher']){
 
-        if($request['student']){ $user->assignrole('student');}else{  $user->removeRole('student'); }
+            $user->assignrole('teacher');
+
+            if(!isset($user->Get_Teacher_Data)){
+
+                DB::table('teachers')->insert([
+
+                    'user_id'=>$user->id
+
+                ]);
+
+            }
+
+
+        }else{  $user->removeRole('teacher'); }
+
+        if($request['student']){
+
+            $user->assignrole('student');
+
+            if(!isset($user->Get_Student_Data)){
+
+                DB::table('students')->insert([
+
+                    'user_id'=>$user->id
+
+                ]);
+
+            }
+
+        }else{  $user->removeRole('student'); }
+
+
 
         return redirect('/admin');
 

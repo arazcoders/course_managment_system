@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html dir="rtl" style="height: auto; min-height: 100%;">
 <head>
-    <title>پنل دانشجویان </title>
+    <title>@yield('title') </title>
     <meta charset="utf-8">
     <meta name="description">
     <meta name="keywords">
@@ -137,7 +137,9 @@
             <section class="sidebar" style="overflow: hidden; width: auto; height: 303px;">
                 <!-- Sidebar user panel -->
                 <div class="welcome" style="border-bottom: 1px solid rgb(234, 235, 239);">
-                    <i class="icon-user icon-user-following" style="color:white;"></i>
+
+<!--                    <i class="icon-user icon-user-following" style="color:white;"></i>-->
+                    <img src="{{ asset('storage/personnel_pics').'/'.auth()->user()->userName.'.jpg'}}" width="50" height="50">
 
                     <p style="color:white;">
                         <span style="color:white;">{{ auth()->user()->name.' '.auth()->user()->last_name }} _</span>دانشجو
@@ -155,7 +157,7 @@
 
                 <ul class="sidebar-menu tree" id="menu" data-widget="tree">
                     <li id="Dashboard" >
-                        <a href="/admin" class=""><i class="icon-grid" style="color:white;"></i><span>مدیریت نیروی انسانی </span></a>
+                        <a href="/student" class=""><i class="icon-info" style="color:white;"></i><span>اطلاعات کاربری </span></a>
                     </li>
 
                     <li id="Announcement" >

@@ -31,6 +31,7 @@ route::delete('/admin/{id}','App\Http\Controllers\AdminController@destroy')->nam
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('index_student');
+Route::put('/student/{id}', [App\Http\Controllers\StudentController::class, 'update'])->name('update_student');
 Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('index_teacher');
 Route::get('/roleSelection', [App\Http\Controllers\Auth\LoginController::class, 'role_selection']);
 Route::post('/redirect_to_panels', [App\Http\Controllers\Auth\LoginController::class, 'redirect_to_panels']);

@@ -21,12 +21,12 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->date('birth_date');
-            $table->string('call_number');
-            $table->string('education_level');
-            $table->string('personnel_pic');
-            $table->string('national_card');
-            $table->date('hire_date');
+            $table->date('birth_date')->nullable();
+            $table->string('call_number')->nullable();
+            $table->string('education_level')->nullable();
+            $table->string('personnel_pic')->nullable();
+            $table->string('national_card')->nullable();
+            $table->date('hire_date')->nullable();
 
             $table->timestamps();
         });

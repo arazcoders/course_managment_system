@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -16,11 +17,41 @@ class StudentController extends Controller
     public function index(){
 
         $user= auth()->user();
-        $user_fullName=$user->name .' '. $user->last_name;
 
-        return view('student.index',compact('user_fullName'));
+        $roles= $user->getRoleNames();
+
+        $is_teacher=false; $is_student=false;
+
+        foreach ($roles as $role){
+
+            if ($role=='teacher'){ $is_teacher=true;}
+            if ($role=='student'){ $is_student=true;}
+
+        }
+
+        return view('student.index',compact('user','is_student','is_teacher'));
 
     }
 
+    public  function  update($id, Request $request){
+
+        $student=Student::query()->where('user_id',$id)->first();
+
+
+        $student->call_number=$request["call_number"];
+        $student->education_level=$request["education_level"];
+
+        $student->birth_date=$request["birth_date"];
+        if(!is_null($request->file('personnel_pic'))){
+
+            $student->personnel_pic=$request->file('personnel_pic')->storeAs('personnel_pics',$student->user->userName.'.jpg','public');
+
+
+        }
+        $student->save();
+
+        return redirect('/student');
+
+    }
 
 }
