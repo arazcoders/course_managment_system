@@ -28,6 +28,8 @@ Route::get('/admin/{id}/edit', [App\Http\Controllers\AdminController::class, 'ed
 Route::post('/admin', [App\Http\Controllers\AdminController::class, 'store'])->name('store_user');
 Route::put('/admin/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('update_user');
 route::delete('/admin/{id}','App\Http\Controllers\AdminController@destroy')->name('delete_user');
+route::get('/course/create','App\Http\Controllers\AdminController@course_create')->name('course_create');
+route::post('/course/store','App\Http\Controllers\AdminController@course_store')->name('course_store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('index_student');

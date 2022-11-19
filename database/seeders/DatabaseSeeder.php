@@ -50,6 +50,14 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make('MJamshidi73@')
         ]);
 
+        DB::table('days')->insert([ 'day_name'=>'saturday']);
+        DB::table('days')->insert([ 'day_name'=>'sunday']);
+        DB::table('days')->insert([ 'day_name'=>'monday']);
+        DB::table('days')->insert([ 'day_name'=>'tuesday']);
+        DB::table('days')->insert([ 'day_name'=>'wednesday']);
+        DB::table('days')->insert([ 'day_name'=>'thursday']);
+        DB::table('days')->insert([ 'day_name'=>'friday']);
+
         Permission::create(['name' => 'manage_users']);
         Permission::create(['name' => 'student_login']);
         Permission::create(['name' => 'teacher_login']);
@@ -65,6 +73,11 @@ class DatabaseSeeder extends Seeder
         User::query()->findOrFail(1)->assignRole($admin);
         User::query()->findOrFail(2)->assignRole($teacher);
         User::query()->findOrFail(3)->assignRole($student);
+
+        DB::table('students')->insert([
+            'user_id'=>'3'
+        ]);
+
 
     }
 }

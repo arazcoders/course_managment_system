@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Course;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -11,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use mysql_xdevapi\Table;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
@@ -194,19 +197,53 @@ class AdminController extends Controller
 
     }
 
+    public function  course_create(){
 
-    public function  Test_Roles(){
 
-        Permission::create(['name' => 'manage_users']);
+        $teachers=Teacher::all();
+        $array=array();
+        foreach ($teachers as $teacher){
 
-        $admin = Role::create(['name' => 'admin']);
+            $array[]=array( $teacher->id,$teacher->user->name.' '.$teacher->user->last_name);
+        }
 
-        $admin->givePermissionTo('manage_users');
+        return view('admin.course_create',['teachers_list'=>$array]);
+    }
 
-        auth()->user()->assignRole($admin);
+    public function course_store(){
 
-        return view('admin.index');
+      $data= \request()->validate([
+           'title'=>'required',
+           'course_start'=>'required',
+           'course_end'=>'required'
+       ]);
+
+        /*Save new course in database  */
+
+        $new_course= Teacher::find(\request('teacher'))->courses()->create($data);
+
+        $days_array=array();
+        $days_array[]=\request('saturday') ? 1 : 0;
+        $days_array[]=\request('sunday') ? 1 : 0;
+        $days_array[]=\request('monday') ? 1 : 0;
+        $days_array[]=\request('tuesday') ? 1 : 0;
+        $days_array[]=\request('wednesday') ? 1 : 0;
+        $days_array[]=\request('thursday') ? 1 : 0;
+        $days_array[]=\request('friday') ? 1 : 0;
+
+        $pivot_table_rows=array();
+        $new_course_id= $new_course->id;
+        foreach ($days_array as $index=>$day){
+
+            if($day==1){ $pivot_table_rows[]=['course_id'=>$new_course_id,'day_id'=>$index+1]; }
+
+        }
+
+        DB::table('course_day')->insert($pivot_table_rows);
+
+        return redirect('course/create');
 
     }
+
 
 }

@@ -11,7 +11,9 @@
     <meta name="language" content="Persian">
     <link rel="shortcut icon" href="~/images/Fartak_Logo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="{{\Illuminate\Support\Facades\URL::asset('css/bootstrap.min.css')}}">
+<!--    <link rel="stylesheet" href="{{\Illuminate\Support\Facades\URL::asset('css/bootstrap.min.css')}}">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet/less" href="{{\Illuminate\Support\Facades\URL::asset('css/app-styles.less')}}">
     <link rel="stylesheet/less" href="{{\Illuminate\Support\Facades\URL::asset('css/skin-cyan.less')}}">
     <link rel="stylesheet" href="{{\Illuminate\Support\Facades\URL::asset('css/main.css')}}">
@@ -154,6 +156,11 @@
                 </div>
 
                 <ul class="sidebar-menu tree" id="menu" data-widget="tree">
+
+                    <li id="Dashboard" >
+                        <a href="/course/create" class=""><i class="icon-grid" style="color:white;"></i><span>ثبت دوره جدید</span></a>
+                    </li>
+
                     <li id="Dashboard" >
                         <a href="/admin" class=""><i class="icon-grid" style="color:white;"></i><span>مدیریت نیروی انسانی </span></a>
                     </li>
