@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Http;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +17,13 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->call(function (){
+
+            Http::get('https://api.telegram.org/bot1636885349:AAHxO0Qd9igyY3fVbsX80Kpd-EcARmJtjPQ/sendMessage?chat_id=-1001097528978&&text=Believing is Magic');
+
+        })->everyMinute();
+
     }
 
     /**

@@ -39,5 +39,5 @@ Route::get('/roleSelection', [App\Http\Controllers\Auth\LoginController::class, 
 Route::post('/redirect_to_panels', [App\Http\Controllers\Auth\LoginController::class, 'redirect_to_panels']);
 
 
-
+Route::get('/test', [App\Http\Controllers\AdminController::class, 'test_sms'])->name('test');
 

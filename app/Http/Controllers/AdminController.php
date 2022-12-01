@@ -10,13 +10,18 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use mysql_xdevapi\Table;
+use App\Helpers\WebOne;
+use SoapClient;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+use const http\Client\Curl\Features\HTTP2;
 
 class AdminController extends Controller
 {
@@ -26,8 +31,6 @@ class AdminController extends Controller
     public function  __construct(){
 
         $this->middleware('can:manage_users');
-
-
 
     }
 
@@ -199,15 +202,18 @@ class AdminController extends Controller
 
     public function  course_create(){
 
+        $teachers=Cache::remember('Test',now()->addSecond(30),function (){ return Teacher::with('user')->get();});
 
-        $teachers=Teacher::all();
+
         $array=array();
         foreach ($teachers as $teacher){
 
             $array[]=array( $teacher->id,$teacher->user->name.' '.$teacher->user->last_name);
         }
 
-        return view('admin.course_create',['teachers_list'=>$array]);
+        $all_courses= Course::all();
+
+        return view('admin.course_create',['teachers_list'=>$array,'courses'=>$all_courses]);
     }
 
     public function course_store(){
@@ -245,5 +251,20 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * @throws \SoapFault
+     */
+
+    public  function  test_sms(){
+
+        $webOne=new WebOne();
+
+         $webOne->sendSMS();
+        /*$webOne->getCredit();*/
+        // -1001097528978
+       /*dd(Http::get('https://api.telegram.org/bot1636885349:AAHxO0Qd9igyY3fVbsX80Kpd-EcARmJtjPQ/sendMessage?chat_id=-1001097528978&&text=Believing is Magic'));*/
+
+        return redirect('/admin');
+    }
 
 }
