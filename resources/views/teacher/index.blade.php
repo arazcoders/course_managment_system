@@ -1,93 +1,203 @@
 @extends('layouts.teacherPanel')
 
 @section('title')
-
-
-
+پنل اساتید
 @endsection
 
 @section('content')
 
-<style>
+@section('content')
 
-    td,th{
+    <style>
 
-        text-align:center;
-        font-size:13px;
+        td,th{
 
-    }
+            text-align:center;
+            font-size:13px;
 
-    .btn{
+        }
 
-        font-size:12.5px;
+        .btn{
 
-    }
+            font-size:12.5px;
 
-    .border_Shadow{
+        }
 
-        border: 1px solid rgb(234, 235, 239);
-        box-shadow: 0 1px 2px 0 rgba(157,157,157,0.2),0 17px 50px 0 rgba(251,251,251,0.05);
-        padding:8px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+        .border_Shadow{
 
-    #New_Hmi:hover{
+            border: 1px solid rgb(234, 235, 239);
+            box-shadow: 0 1px 2px 0 rgba(157,157,157,0.2),0 17px 50px 0 rgba(251,251,251,0.05);
+            padding:8px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
 
-        color:unset!important;
+        #New_Hmi:hover{
 
-    }
+            color:unset!important;
 
-    a:hover{
+        }
 
-        background-color:unset!important;
+        a:hover{
 
-    }
-</style>
+            background-color:unset!important;
 
-<div class="row">
-    <div class="col-xs-12 col-lg-12 ">
+        }
+    </style>
 
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title" style="color: #645ca8;"><i class="icon-list"></i>اطلاعات استاد</h3>
-                <div class="box-tools pull-left">
-                    <a href="#" class="action-box" data-widget="collapse"><i class="icon-arrow-down"></i></a>
+    <div class="row">
+        <div class="col-xs-12 col-lg-12 ">
+
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title" style="color: #645ca8;"><i class="icon-list"></i>اطلاعات استاد</h3>
+                    <div class="box-tools pull-left">
+                        <a href="#" class="action-box" data-widget="collapse"><i class="icon-arrow-down"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-lg-12">
+                <div class="box-body">
+                    <div class="row">
+                        <form action="/teacher/{{$user->id}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('put')
+                            <div class="col-lg-12">
 
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th style="width:5%;">ردیف</th><th>کد ملی</th><th>نام</th><th>نام خانوادگی</th><th>ایمیل</th><th>نقش سامانه ای</th><th>گزینه ها</th>
+                                <div class="form-group">
 
-                            </tr>
-                            </thead>
-                            <tbody>
+                                    <label class="col-md-2 control-label"> کد ملی</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" value="{{$user->userName}}"
+                                               readonly="true"/>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">نام</label>
+
+                                    <div class="col-md-10">
+
+                                        <input type="text" class="form-control" value="{{ $user->name }}"
+                                               readonly="true"/>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">نام خانوادگی</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" value="{{$user->last_name}}"
+                                               readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">ایمیل</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" value="{{$user->email}}"
+                                               readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">نقش سامانه ای</label>
+
+                                    <div class="col-md-10" style="display: flex">
+                                        <div>
+
+                                            <input type="checkbox" @if($is_teacher)  checked @endif disabled/>
+                                            <labe>استاد</labe>
+
+                                        </div>
+                                        <div style="padding-right: 10px;">
+
+                                            <input type="checkbox" @if($is_student)  checked @endif disabled/>
+                                            <labe>دانشجو</labe>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">َشماره تماس</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="call_number" value="{{$user->Get_Teacher_Data->call_number}}"  />
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">سطح تحصیلات</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="education_level" value="{{$user->Get_Teacher_Data->education_level}}"  />
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">تاریخ تولد</label>
+
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control" name="birth_date" value="{{$user->Get_Teacher_Data->birth_date}}"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">تاریخ استخدام</label>
+
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control" name="hire_date" value="{{$user->Get_Teacher_Data->hire_date}}"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="col-md-2 control-label">آپلود عکس</label>
+
+                                    <div class="col-md-10">
+                                        <input type="file" class="form-control" name="personnel_pic"  />
+
+                                    </div>
+                                </div>
 
 
+                                <div class="form-group">
 
-                            </tbody>
+                                    <button type="submit"  class="btn btn-info">تکمیل اطلاعات</button>
 
-                        </table>
+                                </div>
 
 
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
+
+
 
     </div>
 
-
-
-</div>
-
-
+@endsection
 
 @endsection
 

@@ -159,7 +159,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-lg-12 ">
-
+Nc
             <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title" style="color: #645ca8;"><i class="icon-list"></i>لیست دوره های فعال</h3>

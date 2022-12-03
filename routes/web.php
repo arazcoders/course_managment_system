@@ -30,14 +30,18 @@ Route::put('/admin/{id}', [App\Http\Controllers\AdminController::class, 'update'
 route::delete('/admin/{id}','App\Http\Controllers\AdminController@destroy')->name('delete_user');
 route::get('/course/create','App\Http\Controllers\AdminController@course_create')->name('course_create');
 route::post('/course/store','App\Http\Controllers\AdminController@course_store')->name('course_store');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('index_student');
+Route::get('/student/myCourses', [App\Http\Controllers\StudentController::class, 'my_courses'])->name('myCourses');
 Route::put('/student/{id}', [App\Http\Controllers\StudentController::class, 'update'])->name('update_student');
+
 Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('index_teacher');
+Route::put('/teacher/{id}', [App\Http\Controllers\TeacherController::class, 'update'])->name('update_teacher');
+
 Route::get('/roleSelection', [App\Http\Controllers\Auth\LoginController::class, 'role_selection']);
 Route::post('/redirect_to_panels', [App\Http\Controllers\Auth\LoginController::class, 'redirect_to_panels']);
 
 
-Route::get('/test', [App\Http\Controllers\AdminController::class, 'test_sms'])->name('test');
+
 

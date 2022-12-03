@@ -139,7 +139,8 @@
                 <div class="welcome" style="border-bottom: 1px solid rgb(234, 235, 239);">
 
 <!--                    <i class="icon-user icon-user-following" style="color:white;"></i>-->
-                    <img src="{{ asset('storage/personnel_pics').'/'.auth()->user()->userName.'.jpg'}}" width="50" height="50">
+                    <img src="{{ asset('storage/personnel_pics/students').'/'.auth()->user()->userName.'.jpg'}}" width="50" height="50">
+
 
                     <p style="color:white;">
                         <span style="color:white;">{{ auth()->user()->name.' '.auth()->user()->last_name }} _</span>دانشجو
@@ -156,6 +157,10 @@
                 </div>
 
                 <ul class="sidebar-menu tree" id="menu" data-widget="tree">
+
+                    <li id="Dashboard" >
+                        <a href="/student/myCourses" class=""><i class="icon-info" style="color:white;"></i><span>لیست دوره ها </span></a>
+                    </li>
                     <li id="Dashboard" >
                         <a href="/student" class=""><i class="icon-info" style="color:white;"></i><span>اطلاعات کاربری </span></a>
                     </li>

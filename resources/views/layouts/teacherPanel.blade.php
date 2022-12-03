@@ -137,7 +137,8 @@
             <section class="sidebar" style="overflow: hidden; width: auto; height: 303px;">
                 <!-- Sidebar user panel -->
                 <div class="welcome" style="border-bottom: 1px solid rgb(234, 235, 239);">
-                    <i class="icon-user icon-user-following" style="color:white;"></i>
+
+                    <img src="{{ asset('storage/personnel_pics/teachers').'/'.auth()->user()->userName.'.jpg'}}" width="50" height="50">
 
                     <p style="color:white;">
                         <span style="color:white;">{{ auth()->user()->name.' '.auth()->user()->last_name }} _</span>استاد
@@ -155,7 +156,7 @@
 
                 <ul class="sidebar-menu tree" id="menu" data-widget="tree">
                     <li id="Dashboard" >
-                        <a href="/admin" class=""><i class="icon-grid" style="color:white;"></i><span>مدیریت نیروی انسانی </span></a>
+                        <a href="/teacher" class=""><i class="icon-grid" style="color:white;"></i><span>اطلاعات کاربری </span></a>
                     </li>
 
                     <li id="Announcement" >
