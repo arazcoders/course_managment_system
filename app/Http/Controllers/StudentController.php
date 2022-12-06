@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -14,14 +16,6 @@ class StudentController extends Controller
         return $this->middleware('can:student_login');
 
 }
-
-    public  function  my_courses(){
-
-        $all_courses=Course::all();
-
-        return view('student.myCourses',compact('all_courses'));
-
-    }
 
     public function index(){
 
@@ -61,5 +55,41 @@ class StudentController extends Controller
         return redirect('/student');
 
     }
+
+    public  function  courses(){
+
+
+        $all_courses=Course::all();
+        $registered_courses=\auth()->user()->Get_Student_Data->courses;
+
+        $all_courses=$all_courses->diff($registered_courses);
+
+
+        return view('student.courses',compact('all_courses','registered_courses'));
+
+    }
+
+    public function  course_register($id){
+
+       $course=Course::query()->findOrFail($id);
+
+       return view('student.course_register',compact('course'));
+    }
+
+    public  function  course_register_store($id){
+
+        $student_id=\auth()->user()->Get_Student_Data->id;
+
+        DB::table('course_student')->insert([
+
+            'course_id'=>$id,
+            'student_id'=>$student_id
+        ]);
+
+        return redirect('/student/courses');
+
+    }
+
+
 
 }

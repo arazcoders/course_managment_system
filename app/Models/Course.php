@@ -21,4 +21,9 @@ class Course extends Model
         return $this->belongsToMany(Day::class);
     }
 
+    public function students(){
+
+        return $this->belongsToMany(Student::class);
+    }
+
 }

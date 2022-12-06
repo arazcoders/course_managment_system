@@ -204,7 +204,6 @@ class AdminController extends Controller
 
         $teachers=Cache::remember('Test',now()->addSecond(30),function (){ return Teacher::with('user')->get();});
 
-
         $array=array();
         foreach ($teachers as $teacher){
 

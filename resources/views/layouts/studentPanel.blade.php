@@ -159,7 +159,7 @@
                 <ul class="sidebar-menu tree" id="menu" data-widget="tree">
 
                     <li id="Dashboard" >
-                        <a href="/student/myCourses" class=""><i class="icon-info" style="color:white;"></i><span>لیست دوره ها </span></a>
+                        <a href="/student/courses" class=""><i class="icon-info" style="color:white;"></i><span>لیست دوره ها </span></a>
                     </li>
                     <li id="Dashboard" >
                         <a href="/student" class=""><i class="icon-info" style="color:white;"></i><span>اطلاعات کاربری </span></a>

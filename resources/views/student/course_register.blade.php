@@ -59,24 +59,30 @@
             <div class="box-body container">
                 <div class="row">
 
-                 @foreach($all_courses as $course)
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 row">
 
-                                <div class="col-xs-4 pt-4 ">
-                                    <div class="row">
+                        <img src="{{ asset('storage/images/').'/register_course.png'  }}" width="120" >
 
-                                        <img src="{{ asset('storage/images/').'/register_course.png'  }}" width="120" class="col-xs-6">
+                        <h3>{{$course->title}}</h3>
+                        <span>{{ 'مدرس دوره: مهندس '.$course->teacher->user->last_name  }}</span>
+                        <h5 class="pt-1">این دوره برای دانشجویان مهندسی و تمامی افراد علاقه مند مفید است.</h5>
+                        <p class="pt-2">
+                            سرفصل ها
+                            <br>
+                            -آشنایی با اصول مهندسی<br>
+                            -شروع به کار با نرم افزار مرتبط
 
-                                        <div class="col-xs-6 row align-items-center">
+                        </p>
+                        <form method="post" action="{{route('course_register_store',$course->id)}}">
+                            @csrf
+                         <button class="btn btn-default">ثبت نام</button>
 
-                                            <span class="d-block pt-3 pb-2 bold-font">{{$course->title}}</span>
-                                            <span class="d-block">{{'مهندس '.$course->teacher->user->last_name}}</span>
-                                            <span class="d-block pt-1">جزییات و ثبت نام</span>
+                        </form>
+                    </div>
+                    <div class="col-md-3"></div>
 
-                                        </div>
 
-                                    </div>
-                                </div>
-                @endforeach
                 </div>
             </div>
         </div>

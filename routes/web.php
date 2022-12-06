@@ -31,11 +31,16 @@ route::delete('/admin/{id}','App\Http\Controllers\AdminController@destroy')->nam
 route::get('/course/create','App\Http\Controllers\AdminController@course_create')->name('course_create');
 route::post('/course/store','App\Http\Controllers\AdminController@course_store')->name('course_store');
 
+// student panel routes here
 
 Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('index_student');
-Route::get('/student/myCourses', [App\Http\Controllers\StudentController::class, 'my_courses'])->name('myCourses');
+Route::get('/student/courses', [App\Http\Controllers\StudentController::class, 'courses'])->name('courses');
+Route::get('/student/courses/register/{id}', [App\Http\Controllers\StudentController::class, 'course_register'])->name('course_register');
+Route::post('/student/courses/register/{id}', [App\Http\Controllers\StudentController::class, 'course_register_store'])->name('course_register_store');
+
 Route::put('/student/{id}', [App\Http\Controllers\StudentController::class, 'update'])->name('update_student');
 
+// end student panel
 Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('index_teacher');
 Route::put('/teacher/{id}', [App\Http\Controllers\TeacherController::class, 'update'])->name('update_teacher');
 
